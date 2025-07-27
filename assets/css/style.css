@@ -120,7 +120,7 @@
 .dropdown-toggle::after {
   display: none;
 }
-
+/**/
 /* Titles */
 .title-box::after {
   content: "";
