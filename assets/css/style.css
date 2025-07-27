@@ -117,6 +117,10 @@
   width: 85%;
 }
 
+.dropdown-toggle::after {
+  display: none;
+}
+
 /* Titles */
 .title-box::after {
   content: "";
