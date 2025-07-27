@@ -1,20 +1,71 @@
+/* ======= Custom CSS File ======= */
 :root {
+  /* Basic variables */
   --background-image-url: url("");
+
+  /* Colors */
+  --primary-color: #0078ff;
+  --primary-color-light: #0077ff51;
+  --secondary-color: #ffffff;
+  --progress-bg-color: #cde1f8;
+  --body-bg-color: #f5f5f5;
+  --text-color: #333333;
+
+  /* distances */
+  --spacing-3-5: 1.25rem;
+  --spacing-1: 0.25rem;
+
+  /* sizes */
+  --page-title-size: 72px;
+  --cursor-size: 35px;
+  --ico-circle-size: 100px;
+  --ico-circle-small: 60px;
+
+  /* fonts */
+  --font-weight-bold: bold;
+
+  /* Movements and transitions */
+  --transition-fast: 0.3s;
+  --transition-normal: 0.4s;
+  --transition-slow: 0.6s;
+
+  /* Effects */
+  --shadow-sm: 0 0 6px 0 gray;
+  --shadow-primary: 0 0 0 10px var(--primary-color);
+  --shadow-primary-light: 0 0 0 10px var(--primary-color-light);
 }
 
+/* ======= Helper classes for modifying Bootstrap variables ======= */
+
+/* Navbar Padding */
 .navbar-py-3-5 {
-  --bs-navbar-padding-y: 1.25rem;
+  --bs-navbar-padding-y: var(--spacing-3-5);
 }
 
 .navbar-px-3-5 {
-  --bs-navbar-padding-x: 1.25rem;
+  --bs-navbar-padding-x: var(--spacing-3-5);
 }
 
 .navbar-p-3-5 {
-  --bs-navbar-padding-y: 1.25rem;
-  --bs-navbar-padding-x: 1.25rem;
+  --bs-navbar-padding-y: var(--spacing-3-5);
+  --bs-navbar-padding-x: var(--spacing-3-5);
 }
 
+/* Dropdown */
+.dropdown-custom-radius {
+  --bs-dropdown-border-radius: 0;
+}
+
+/* Progress Bars */
+.progress-custom {
+  --bs-progress-bg: var(--progress-bg-color);
+  --bs-progress-border-radius: 0;
+  --bs-progress-height: 10px;
+}
+
+/* ======= Custom Components ======= */
+
+/* background */
 .bg-image {
   background-image: var(--background-image-url);
   background-repeat: no-repeat;
@@ -23,46 +74,42 @@
   background-position: center center;
 }
 
+/* pointer */
 .cursor-pointer {
   cursor: pointer;
 }
-
-body {
-  background-color: #f5f5f5;
+.swiper-pointer-events {
+  touch-action: pan-x;
 }
 
+/* Texts */
 .page-title-font {
-  font-size: 72px;
+  font-size: var(--page-title-size);
 }
 
 .typed-cursor {
-  font-weight: bold;
-  font-size: 35px;
-  color: #ffffff;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--cursor-size);
+  color: var(--secondary-color);
 }
 
-.dropdown-menu {
-  --bs-dropdown-border-radius: 0;
-  transition: all 0.4s;
-  display: none;
-}
-
+/* Navigation */
 .nav-link::after {
   content: "";
   display: block;
   width: 0;
   height: 1px;
   transform: translateY(4px);
-  background-color: white;
-  transition: all 0.4s;
-  dropdown-toggle::before {
-    background-color: transparent;
-    width: 0;
-  }
-}
-
-.dropdown-toggle::after {
-  display: none;
+  background-color: var(--secondary-color);
+  transition: all var(--transition-normal);
+  -webkit-transform: translateY(4px);
+  -moz-transform: translateY(4px);
+  -ms-transform: translateY(4px);
+  -o-transform: translateY(4px);
+  -webkit-transition: all var(--transition-normal);
+  -moz-transition: all var(--transition-normal);
+  -ms-transition: all var(--transition-normal);
+  -o-transition: all var(--transition-normal);
 }
 
 .nav-link.active::after,
@@ -70,67 +117,57 @@ body {
   width: 85%;
 }
 
-.services-title-box::after {
+/* Titles */
+.title-box::after {
   content: "";
   display: inline-block;
-  width: 40px;
+  width: var(--underline-width, 40px);
   height: 5px;
-  background-color: #0078ff;
+  background-color: var(--primary-color);
   margin: 0 auto;
 }
 
-.dropdown-toggle i::before {
-  border: none;
-  margin-left: 10px;
-  background-color: transparent;
-}
-
-.about-title::after {
-  display: block;
-  content: "";
-  height: 3px;
-  margin-top: 1rem;
-  background-color: #0078ff;
-  width: 100px;
-}
-
-.progress {
-  margin-top: 10px;
-  --bs-progress-bg: #cde1f8;
-  --bs-progress-border-radius: 0;
-  --bs-progress-height: 10px;
-}
-
+/* circles */
 .ico-circle {
-  background-color: #ffffff;
-  width: 100px;
-  height: 100px;
-  box-shadow: 0 0 0 10px #0078ff;
-  transition: all 0.5s;
+  background-color: var(--secondary-color);
+  width: var(--ico-circle-size);
+  height: var(--ico-circle-size);
+  box-shadow: var(--shadow-primary);
+  transition: all var(--transition-slow);
+  -webkit-transition: all var(--transition-slow);
+  -moz-transition: all var(--transition-slow);
+  -ms-transition: all var(--transition-slow);
+  -o-transition: all var(--transition-slow);
 }
 
 .ico-circle.w-ico {
-  width: 50px !important;
-  height: 50px !important;
-  box-shadow: 0 0 0 5px #0078ff;
+  width: var(--ico-circle-small) !important;
+  height: var(--ico-circle-small) !important;
+  box-shadow: 0 0 0 5px var(--primary-color);
 }
 
-.card:hover .ico-circle.w-ico.hover {
-  box-shadow: 0 0 0 5px #0077ff51;
+/* Hover effects */
+.card:hover .ico-circle.w-ico.hover,
+.ico-circle.w-ico.hover:hover {
+  color: var(--secondary-color);
+  box-shadow: 0 0 0 5px var(--primary-color-light);
+  background-color: var(--primary-color);
 }
 
-.card:hover .ico-circle.hover {
-  color: #ffffff;
-  background-color: #0078ff;
-  box-shadow: 0 0 0 10px #0077ff51;
+.card:hover .ico-circle.hover,
+.ico-circle.hover:hover {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  box-shadow: var(--shadow-primary-light);
 }
 
+/* the pictures */
 img {
-  transition: all 0.6s;
-  -webkit-transition: all 0.6s;
-  -moz-transition: all 0.6s;
-  -ms-transition: all 0.6s;
-  -o-transition: all 0.6s;
+  transition: all var(--transition-slow);
+  -webkit-transition: all var(--transition-slow);
+  -moz-transition: all var(--transition-slow);
+  -ms-transition: all var(--transition-slow);
+  -o-transition: all var(--transition-slow);
 }
 
 #work img:hover {
@@ -141,15 +178,23 @@ img {
   -o-transform: scale(1.2);
 }
 
+/* Back to top button */
 .back-to-top {
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast) ease;
+  cursor: default;
+  -webkit-transition: all var(--transition-fast) ease;
+  -moz-transition: all var(--transition-fast) ease;
+  -ms-transition: all var(--transition-fast) ease;
+  -o-transition: all var(--transition-fast) ease;
 }
 
 .back-to-top i {
   width: 30px;
   height: 30px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
 }
 
 .back-to-top.active {
@@ -158,15 +203,94 @@ img {
 }
 
 .back-to-top i {
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast) ease;
+  -webkit-transition: all var(--transition-fast) ease;
+  -moz-transition: all var(--transition-fast) ease;
+  -ms-transition: all var(--transition-fast) ease;
+  -o-transition: all var(--transition-fast) ease;
 }
 
-.back-to-top:hover i {
+.back-to-top i:hover {
   transform: translateY(-5px);
+  -webkit-transform: translateY(-5px);
+  -moz-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -o-transform: translateY(-5px);
 }
 
+/* Flex Utilities */
 .flex-center {
   display: flex !important;
   justify-content: center;
   align-items: center;
+}
+
+/* ======= Applying variables to basic elements ======= */
+body {
+  background-color: var(--body-bg-color);
+  color: var(--text-color);
+}
+
+#carouselExampleDark {
+  touch-action: pan-x;
+}
+
+.carousel-indicators button[data-bs-target] {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: rgb(216, 216, 216);
+}
+
+.carousel-indicators button.active {
+  background-color: white;
+}
+
+.card-category-box {
+  bottom: -16px;
+  line-height: 25px;
+}
+
+.card-category-box .card-category {
+  padding: 0 15px 5px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.card-category-box .card-category h6 {
+  font-size: 0.7rem;
+  letter-spacing: 0.1px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+  overflow: hidden;
+}
+
+.nav-item:hover:has(.dropdown-menu) .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  transition: all 0.3s;
+  display: none;
+  align-items: center;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #989898 !important;
 }
